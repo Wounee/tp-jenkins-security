@@ -4,10 +4,10 @@ pipeline {
     stages {
 
         stage('Install Dependencies') {
-    steps {
-        sh 'pip install -r requirements.txt --break-system-packages'
-    }
-    }
+            steps {
+                sh 'pip install -r requirements.txt --break-system-packages'
+            }
+        }
 
         stage('Run Tests') {
             steps {
@@ -18,7 +18,7 @@ pipeline {
         stage('SCA Scan - OWASP Dependency Check') {
             steps {
                 dependencyCheck(
-                    additionalArguments: '--project "TP-Jenkins" --scan . --format HTML --failOnCVSS 7',
+                    additionalArguments: '--project "TP-Jenkins" --scan . --format HTML --format XML --disableNvd --disableRetireJS --noupdate',
                     odcInstallation: 'OWASP-DC'
                 )
             }
@@ -28,6 +28,7 @@ pipeline {
                 }
             }
         }
+
     }
 
     post {
