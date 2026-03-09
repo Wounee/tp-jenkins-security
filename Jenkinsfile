@@ -18,7 +18,7 @@ pipeline {
         stage('SCA Scan - OWASP Dependency Check') {
             steps {
                 dependencyCheck(
-                    additionalArguments: '--project "TP-Jenkins" --scan . --format HTML --format XML --disableNvd --disableRetireJS --noupdate',
+                    additionalArguments: '--project "TP-Jenkins" --scan . --format HTML --format XML --noupdate --disableRetireJS --disableOssIndex --disableNodeAudit --disableCentral',
                     odcInstallation: 'OWASP-DC'
                 )
             }
