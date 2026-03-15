@@ -5,13 +5,13 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'pip install -r requirements.txt --break-system-packages'
+                bat 'pip install -r requirements.txt'
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'pytest test_app.py -v'
+                bat 'pytest test_app.py -v'
             }
         }
 
@@ -28,7 +28,6 @@ pipeline {
                 }
             }
         }
-
     }
 
     post {
