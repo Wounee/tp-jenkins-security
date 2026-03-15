@@ -17,10 +17,10 @@ pipeline {
 
         stage('SCA Scan - OWASP Dependency Check') {
             steps {
-                ddependencyCheck(
-    additionalArguments: '--project "TP-Jenkins" --scan . --format HTML --format XML --nvdApiKey dc3bd8bf-2bb4-4b0b-8a57-493a521f95d6 --enableExperimental',
-    odcInstallation: 'OWASP-DC'
-)
+                dependencyCheck(
+                    additionalArguments: '--project "TP-Jenkins" --scan . --format HTML --format XML --nvdApiKey dc3bd8bf-2bb4-4b0b-8a57-493a521f95d6',
+                    odcInstallation: 'OWASP-DC'
+                )
             }
             post {
                 always {
